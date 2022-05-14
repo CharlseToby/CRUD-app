@@ -3,6 +3,7 @@ import ReadService from "../services/ReadService"
 import { Link, useNavigate } from "react-router-dom"
 
 const ReadPost = () => {
+  const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
 
   let navigate = useNavigate();
@@ -17,6 +18,7 @@ const ReadPost = () => {
     .then(response => {
       let myData = response.data.splice(0, 15);
       setPosts(myData);
+      setLoading(false);
       console.log(myData);
     }).catch(e => {
       console.log(e);
@@ -58,26 +60,34 @@ const ReadPost = () => {
     </table>
   ));
 
-  return(
-    <div className="Home">
-      <div className="Home-create">
-        <Link to={"/create"} className="btn-create">Create</Link>
-      </div>
-      <div className="post-list">
-        <table className="table">
-      <thead className="tbody">
-        <tr className="tr">
-          <td className="id"><strong>Id</strong></td>
-          <td className="userId"><strong>UserId</strong></td>
-          <td className="title"><strong>Title</strong></td>
-          <td className="body"><strong>Body</strong></td>
-          <td className="update"><strong>Update</strong></td>
-          <td className="delete"><strong>Delete</strong></td>
-        </tr>
-      </thead>
-    </table>
-       {myPosts}
-      </div>
+  return(  
+    <div>
+      {loading ? (
+        <div>
+          loading
+        </div>
+      ) : (
+        <div className="Home">
+          <div className="Home-create">
+            <Link to={"/create"} className="btn-create">Create</Link>
+          </div>
+          <div className="post-list">
+            <table className="table">
+              <thead className="tbody">
+                <tr className="tr">
+                  <td className="id"><strong>Id</strong></td>
+                  <td className="userId"><strong>UserId</strong></td>
+                  <td className="title"><strong>Title</strong></td>
+                  <td className="body"><strong>Body</strong></td>
+                  <td className="update"><strong>Update</strong></td>
+                  <td className="delete"><strong>Delete</strong></td>
+                </tr>
+              </thead>
+            </table>
+                {myPosts}
+          </div>
+        </div>
+      ) }
     </div>
   )
 }

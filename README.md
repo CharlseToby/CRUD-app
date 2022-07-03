@@ -1,3 +1,21 @@
+Link to live site: https://charlsetoby.github.io/CRUD-app/
+
+Learnt how to perform CRUD operations
+  C - Create
+  R - Read
+  U - Update
+  D - Delete
+Technologies used:
+  Typescript
+  Axios
+  React
+  SCSS
+  Hooks
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
